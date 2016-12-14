@@ -22,11 +22,12 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-	  <li><a href="home.php">Home</a></li>
-          <li><a href="regra_tres.php">Regra de Três</a></li>
-          <li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
-	  <li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
-          <li><a href="sobre.php">Sobre</a></a></li>
+	  		<li><a href="home.php">Home</a></li>
+        	<li><a href="regra_tres.php">Regra de Três</a></li>
+        	<li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
+	  		<li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
+	  		<li><a href="financeira.php">Matemática Financeira</a></li>
+        	<li><a href="sobre.php">Sobre</a></a></li>
       </ul>
     </div>
   </div>
@@ -71,23 +72,27 @@
             </form>
             <h4>Resultado</h4>
             Raízes: <?php
-                    function arredonda($numero){
-                        return round((float)$numero * 1000000000)/1000000000;
-                    }
+            		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    					function arredonda($numero){
+	                        return round((float)$numero * 1000000000)/1000000000;
+	                    }
 
-                    $a = (float)$_POST["termo_a"];
-                    $b = (float)$_POST["termo_b"];
-                    $c = (float)$_POST["termo_c"];
-                    
-                    $dir = $_POST["proporcao"];
+	                    $a = (float)$_POST["termo_a"];
+	                    $b = (float)$_POST["termo_b"];
+	                    $c = (float)$_POST["termo_c"];
+	                    
+	                    $dir = $_POST["proporcao"];
 
-                    if($dir == "diretamente") {
-                        if ($a == 0) echo "O termo a não pode ser nulo.";
-                        else echo ($b * $c)/$a;
-                    } else {
-                        if ($b == 0) echo "O termo b não pode ser nulo.";
-                        else echo ($a * $c)/$b;
-                    }
+	                    if($dir == "diretamente") {
+	                        if ($a == 0) echo "O termo a não pode ser nulo.";
+	                        else echo ($b * $c)/$a;
+	                    } else {
+	                        if ($b == 0) echo "O termo b não pode ser nulo.";
+	                        else echo ($a * $c)/$b;
+	                    }
+					} else {
+						echo "Preencha os campos";
+					}
             ?>
         </main>
 </body>

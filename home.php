@@ -21,13 +21,12 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-	  <li><a href="home.php">Home</a></li>
-          <li><a href="regra_tres.php">Regra de Três</a></li>
-          <li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
-	  <li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
-          <li><a href="sobre.php">Sobre</a></a></li>
-          
+    		<li><a href="home.php">Home</a></li>
+        	<li><a href="regra_tres.php">Regra de Três</a></li>
+        	<li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
+	  		<li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
+	  		<li><a href="financeira.php">Matemática Financeira</a></li>
+        	<li><a href="sobre.php">Sobre</a></a></li>
       </ul>
     </div>
   </div>

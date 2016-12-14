@@ -22,11 +22,12 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-	  <li><a href="home.php">Home</a></li>
-          <li><a href="regra_tres.php">Regra de Três</a></li>
-          <li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
-	  <li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
-          <li><a href="sobre.php">Sobre</a></a></li>
+			<li><a href="home.php">Home</a></li>
+        	<li><a href="regra_tres.php">Regra de Três</a></li>
+        	<li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
+	  		<li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
+	  		<li><a href="financeira.php">Matemática Financeira</a></li>
+        	<li><a href="sobre.php">Sobre</a></a></li>
       </ul>
     </div>
   </div>
@@ -69,6 +70,7 @@
             </form>
             <h4>Resultado</h4>
             Raízes: <?php
+            	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     function arredonda($numero){
                         return round((float)$numero * 1000000000)/1000000000;
                     }
@@ -85,6 +87,9 @@
                         if (($a * $a + $b * $b) < 0) echo "Não existem raízes reais.";
                         else echo arredonda(sqrt($a * $a + $b * $b));
                     }
+                } else {
+                	echo "Preencha os campos.";
+                }
             ?>
         </main>
 </body>

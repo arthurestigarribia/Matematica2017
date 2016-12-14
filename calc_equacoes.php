@@ -15,19 +15,20 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="home.php">Estaleiro Matemático</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-	  <li><a href="home.php">Home</a></li>
+          <li><a href="home.php">Home</a></li>
           <li><a href="regra_tres.php">Regra de Três</a></li>
           <li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
-	  <li><a href="pitagoras.php">Teorema de Pitágoras</a></li>]
+          <li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
+          <li><a href="financeira.php">Matemática Financeira</a></li>
           <li><a href="sobre.php">Sobre</a></a></li>
-          
+        </li>  
       </ul>
     </div>
   </div>
@@ -67,13 +68,18 @@
             </form>
             <h4>Resultado</h4>
             Raízes: <?php
+           		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     function arredonda($numero){
                         return round((float)$numero * 1000000000)/1000000000;
                     }
 
-                    $a = (float)$_POST["termo_a"];
-                    $b = (float)$_POST["termo_b"];
-                    $c = (float)$_POST["termo_c"];
+                    $a = 0;
+                    $b = 0;
+                    $c = 0;
+
+                    $a = isset($_POST["termo_a"]) ? (float)$_POST["termo_a"] : 0.0;
+                    $b = isset($_POST["termo_b"]) ? (float)$_POST["termo_b"] : 0.0;
+                    $c = isset($_POST["termo_c"]) ? (float)$_POST["termo_c"] : 0.0;
 
                     if($a == 0) {
                             if ($b == 0) {
@@ -93,6 +99,9 @@
                                     echo arredonda($x1) . " e " . arredonda($x2);
                             }
                     }
+                } else {
+                	echo "Preencha os campos.";
+                }
             ?>
         </main>
 </body>
