@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,11 +26,17 @@
       <ul class="nav navbar-nav navbar-right">
     	<li class="dropdown">
 			<li><a href="home.php">Home</a></li>
-        	<li><a href="regra_tres.php">Regra de Três</a></li>
-        	<li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
-	  		<li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
-	  		<li><a href="financeira.php">Matemática Financeira</a></li>
+	  		<li><a href="calculadoras.php">Calculadoras</a></li>
         	<li><a href="sobre.php">Sobre</a></a></li>
+          <li>
+            <?php
+              if (isset($_SESSION['logado'])) {
+                  echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+              } else {
+                  echo "<a href='login.php'>Login</a>";
+              }
+            ?>
+          </li>
         </li>
       </ul>
     </div>
@@ -70,7 +79,7 @@
             <input type="submit" class="form-control" placeholder="Calcular" id="save">
         </form>
         <h4>Resultado</h4>
-        Raízes: <?php
+        <?php
         	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	            function arredonda($numero){
 	                return round((float)$numero * 100)/100;
@@ -83,9 +92,9 @@
 	            $dir = isset($_POST["proporcao"]) ? $_POST["proporcao"] : "diretamente";
 
 	            if($dir == "diretamente") {
-	                echo arredonda($a * (1 + $b/100 * $c));
+	                echo "Raízes: " . arredonda($a * (1 + $b/100 * $c));
 	            } else {
-	                echo arredonda($a * (1 + $b/100) ** $c);
+	                echo "Raízes: " . arredonda($a * (1 + $b/100) ** $c);
 	            }
 	        } else {
 	        	echo "Preencha os campos.";

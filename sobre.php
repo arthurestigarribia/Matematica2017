@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,31 +18,38 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="home.php">Estaleiro Matemático</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+    	<li class="dropdown">
 			<li><a href="home.php">Home</a></li>
-        	<li><a href="regra_tres.php">Regra de Três</a></li>
-        	<li><a href="calc_equacoes.php">Calculadora de Equações</a></li>
-	  		<li><a href="pitagoras.php">Teorema de Pitágoras</a></li>
-	  		<li><a href="financeira.php">Matemática Financeira</a></li>
+	  		<li><a href="calculadoras.php">Calculadoras</a></li>
         	<li><a href="sobre.php">Sobre</a></a></li>
+          <li>
+            <?php
+              if (isset($_SESSION['logado'])) {
+                  echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+              } else {
+                  echo "<a href='login.php'>Login</a>";
+              }
+            ?>
+          </li>
+        </li>
       </ul>
     </div>
   </div>
-</nav>    
+</nav>  
     <div class="jumbotron" style="padding-left: 10px; padding-right: 10px; padding-top: 100px;">
         <h1>Sobre o projeto</h1>
-        <p>Bem-vindo ao Estaleiro Matemático. Confira mais informaçẽos sobre o projeto aqui.</p>
+        <p>Bem-vindo ao Estaleiro Matemático. Confira mais informações sobre o projeto aqui.</p>
         <a type="button" class="btn btn-primary" href="https://riogrande.ifrs.edu.br/">Saiba mais</a>
     </div>
     
     <main style="padding-left: 10px; padding-right: 10px;">
-        <strong>Orientador:</strong> Eduardo Wenzel Brião<br>
+        <strong>Orientadora:</strong> Raquel Barbosa<br>
         <strong>Editor e diagramador:</strong> Arthur Aguiar Estigarribia<br>
         <strong>Instituição:</strong> <a href="https://riogrande.ifrs.edu.br/">IFRS RIo Grande</a><br>
         <strong>Endereço:</strong> <address>Rua Alfredo Huch, 475, Salgado Filho, Rio Grande, RS, Brasil</address><br>
