@@ -1,0 +1,54 @@
+main {
+   padding-left: 5%;
+   padding-right: 5%;
+}
+
+.jumbotron {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: rgb(0, 60, 120);
+    color: white;
+}
+
+footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: rgb(0, 60, 120);
+    color: white;
+}
+
+h1, h2, h3, h4 {
+    color: rgb(0, 60, 120);
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(0, 60, 120);
+}
+
+.btn {
+    background-color: rgb(0, 60, 120);
+    color: white;
+    border: 0px;
+}
+
+.nav, .navbar, .navbar-toggle, .navbar-nav, .navbar-right {
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: white;
+    color: rgb(0, 60, 120);
+    border: 0px;
+}
+
+a {
+    border: 0px;
+    color: rgb(0, 60, 120);
+}
+
+.row {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
