@@ -52,7 +52,7 @@
         <?php
             $connect = mysqli_connect('localhost', 'root', '', 'usuarios') or die(mysqli_error('Não foi possível conectar ao banco de dados.'));
 
-			$dados = mysqli_query($connect, "SELECT * FROM calculos WHERE id_usuario = " . $_GET['id']);
+			$dados = mysqli_query($connect, "SELECT * FROM calculos WHERE id_usuario = " . $_GET['id'] . " LIMIT 10");
 			$linha = mysqli_fetch_assoc($dados);
 			$total = mysqli_num_rows($dados);
 
