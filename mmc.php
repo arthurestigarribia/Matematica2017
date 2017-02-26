@@ -34,7 +34,7 @@
               <li>
                 <?php
                   if (isset($_SESSION['logado'])) {
-                      echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
                   } else {
                       echo "<a href='login.php'>Login</a>";
                   }
@@ -103,7 +103,12 @@
                     return ($a * $b) / mdc($a, $b);
                 }
 
-                echo "MMC: " . mmc($a, $b) . " | MDC = " . mdc($a, $b);
+                $r = "MMC: " . mmc($a, $b) . " | MDC = " . mdc($a, $b);
+
+                echo $r;
+                $id = $_SESSION['id'];
+                $con = mysqli_connect('localhost', 'root', '', 'usuarios') or die(mysqli_error('Não foi possível conectar ao banco de dados.'));
+			    $q = mysqli_query($con, "INSERT INTO calculos(id_usuario, categoria, dado1, dado2, resultados) VALUES ('$id', 'MMC e MDC', '$a', '$b', '$r');");
             }
         ?>
     </main>

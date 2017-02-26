@@ -34,7 +34,7 @@
               <li>
                 <?php
                   if (isset($_SESSION['logado'])) {
-                      echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
                   } else {
                       echo "<a href='login.php'>Login</a>";
                   }
@@ -96,14 +96,20 @@
 	                    $c = (float)$_POST["termo_c"];
 	                    
 	                    $dir = $_POST["proporcao"];
+                      $r = "";
 
 	                    if($dir == "diretamente") {
 	                        if ($a == 0) echo "O termo a não pode ser nulo.";
-	                        else echo "Raízes: " . ($b * $c)/$a;
+	                        else $r = "Raízes: " . ($b * $c)/$a;
 	                    } else {
 	                        if ($b == 0) echo "O termo b não pode ser nulo.";
-	                        else echo "Raízes: " . ($a * $c)/$b;
+	                        else $r = "Raízes: " . ($a * $c)/$b;
 	                    }
+
+                       echo $r;
+                    $id = $_SESSION['id'];
+                    $con = mysqli_connect('localhost', 'root', '', 'usuarios') or die(mysqli_error('Não foi possível conectar ao banco de dados.'));
+			              $q = mysqli_query($con, "INSERT INTO calculos(id_usuario, categoria, dado1, dado2, dado3, resultados) VALUES ('$id', 'Regra de Três', '$a', '$b', '$c', '$r');");
 					} else {
 						echo "Preencha os campos";
 					}

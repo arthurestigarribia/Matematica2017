@@ -30,8 +30,8 @@
               <li><a class="nav-link" href="sobre.php">Sobre</a></a></li>
               <li>
                 <?php
-                  if (isset($_SESSION['logado'])) {
-                      echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+                   if (isset($_SESSION['logado'])) {
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
                   } else {
                       echo "<a href='login.php'>Login</a>";
                   }
@@ -86,24 +86,31 @@
                 }
 
                 function obtemNome($c, $u, $s) {
-                    $q = mysqli_query($c, "SELECT nome FROM usuarios WHERE email = '$u' AND senha = md5('$s');") or die(errodb(7));
+                    $q = mysqli_query($c, "SELECT nome FROM usuarios WHERE email = '$u' AND senha = md5('$s');") or die(errodb(6));
                     $r = mysqli_fetch_assoc($q);
 
                     return $r["nome"];
                 }
 
-                $nome = $_POST['nome'];
+                function obtemId($c, $u, $s) {
+                    $q = mysqli_query($c, "SELECT id FROM usuarios WHERE email = '$u' AND senha = md5('$s');") or die(errodb(6));
+                    $r = mysqli_fetch_assoc($q);
+
+                    return $r["id"];
+                }
+
                 $email = $_POST['email'];
                 $senha = $_POST['senha'];
 
                 if (validaUsuario($c, $email, $senha)) {
+                    $_SESSION['id'] = obtemId($c, $email, $senha);
                     $_SESSION['nome'] = obtemNome($c, $email, $senha);
                     $_SESSION['email'] = $_POST['email'];
                     $_SESSION['logado'] = true;
 
                     header('Location: home.php');
                 } else {
-                    unset($_SESSION['nome'], $_SESSION['email'], $_SESSION['logado']);
+                    unset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'], $_SESSION['logado']);
                     session_destroy();
 
                     echo "<div class='alert alert-danger' role='alert'>Email ou senha incorretas.</div>";

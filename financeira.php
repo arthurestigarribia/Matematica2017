@@ -34,7 +34,7 @@
               <li>
                 <?php
                   if (isset($_SESSION['logado'])) {
-                      echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
                   } else {
                       echo "<a href='login.php'>Login</a>";
                   }
@@ -100,6 +100,11 @@
 	            } else {
 	                echo "Raízes: " . arredonda($a * (1 + $b/100) ** $c);
 	            }
+
+              echo $r;
+              $id = $_SESSION['id'];
+              $con = mysqli_connect('localhost', 'root', '', 'usuarios') or die(mysqli_error('Não foi possível conectar ao banco de dados.'));
+			        $q = mysqli_query($con, "INSERT INTO calculos(id_usuario, categoria, dado1, dado2, dado3, dado4, resultados) VALUES ('$id', 'Financeira', '$a', '$b', '$c', '$dir', '$r');");
 	        } else {
 	        	echo "Preencha os campos.";
 	        }

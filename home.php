@@ -31,7 +31,7 @@
               <li>
                 <?php
                   if (isset($_SESSION['logado'])) {
-                      echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
                   } else {
                       echo "<a href='login.php'>Login</a>";
                   }

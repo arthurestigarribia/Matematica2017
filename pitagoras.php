@@ -34,7 +34,7 @@
               <li>
                 <?php
                   if (isset($_SESSION['logado'])) {
-                      echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
                   } else {
                       echo "<a href='login.php'>Login</a>";
                   }
@@ -93,14 +93,20 @@
                     $b = (float)$_POST["termo_b"];
                     
                     $dir = $_POST["proporcao"];
+                    $r = "";
 
                     if($dir == "diretamente") {
                         if (($a * $a - $b * $b) < 0) echo "Não existem raízes reais.";
-                        else echo "Raízes: " . arredonda(sqrt($a * $a - $b * $b));
+                        else $r = "Raízes: " . arredonda(sqrt($a * $a - $b * $b));
                     } else {
                         if (($a * $a + $b * $b) < 0) echo "Não existem raízes reais.";
-                        else echo "Raízes: " . arredonda(sqrt($a * $a + $b * $b));
+                        else $r = "Raízes: " . arredonda(sqrt($a * $a + $b * $b));
                     }
+
+                    echo $r;
+                    $id = $_SESSION['id'];
+                    $con = mysqli_connect('localhost', 'root', '', 'usuarios') or die(mysqli_error('Não foi possível conectar ao banco de dados.'));
+			              $q = mysqli_query($con, "INSERT INTO calculos(id_usuario, categoria, dado1, dado2, dado3, resultados) VALUES ('$id', 'Pitágoras', '$a', '$b', '$tipo', '$r');");
                 } else {
                 	echo "Preencha os campos.";
                 }

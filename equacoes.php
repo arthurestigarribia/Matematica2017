@@ -34,7 +34,7 @@
               <li>
                 <?php
                   if (isset($_SESSION['logado'])) {
-                      echo "<a href='sair.php'>" . $_SESSION['nome'] . "</a>";
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
                   } else {
                       echo "<a href='login.php'>Login</a>";
                   }
@@ -94,24 +94,31 @@
                     $b = isset($_POST["termo_b"]) ? (float)$_POST["termo_b"] : 0.0;
                     $c = isset($_POST["termo_c"]) ? (float)$_POST["termo_c"] : 0.0;
 
+                    $r = "";
+
                     if($a == 0) {
                             if ($b == 0) {
-                                    echo "Erro: o termo de primeiro e segundo grau não podem ser nulos simultaneamente.";
+                                    $r = "Erro: o termo de primeiro e segundo grau não podem ser nulos simultaneamente.";
                             } else {
-                                    echo "Raízes: " . arredonda(-$c/$b);
+                                    $r = "Raízes: " . arredonda(-$c/$b);
                             }
                     } else {
                             $delta = $b * $b - 4 * $a * $c;
 
                             if ($delta < 0) {
-                                    echo "Não existem raízes reais.";
+                                   $r = "Não existem raízes reais.";
                             } else {
                                     $x1 = (-$b + sqrt($delta))/(2 * $a);
                                     $x2 = (-$b - sqrt($delta))/(2 * $a);
 
-                                    echo "Raízes: " . arredonda($x1) . " e " . arredonda($x2);
+                                    $r = "Raízes: " . arredonda($x1) . " e " . arredonda($x2);
                             }
                     }
+
+                    echo $r;
+                    $id = $_SESSION['id'];
+                    $con = mysqli_connect('localhost', 'root', '', 'usuarios') or die(mysqli_error('Não foi possível conectar ao banco de dados.'));
+			              $q = mysqli_query($con, "INSERT INTO calculos(id_usuario, categoria, dado1, dado2, dado3, resultados) VALUES (" . $id . ", 'Equações', '" . $a . "', '" . $b . "', '" . $c . "', '" . $r . "');");
                 } else {
                 	echo "Preencha os campos.";
                 }

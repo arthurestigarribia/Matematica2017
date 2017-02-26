@@ -47,51 +47,26 @@
     </nav>
   </header>
     <div class="jumbotron">
-        <h1>Calculadoras</h1>
-        <p>Bem-vindo ao Estaleiro Matemático! Aqui você confere calculadoras incríveis!</p>
-        <a type="button" class="btn btn-primary" href="sobre.php">Saiba mais sobre o projeto</a>
+        <h1>Atualizar informações pessoais</h1>
+        <p>Atualize seu cadastro e veja seu histórico de cálculos.</p>
+        <a type="button" class="btn btn-primary" href="sair.php">Sair</a>
     </div>
-    <main>
-        <h1>Todas as calculadoras</h1>
-        <table class="table">
-            <thead>
-                <td>Calculadora</td>
-                <td>Descrição</td>
-                <td>Visitar</td>
-            </thead>
-            <tr>
-                <td>Equações</td>
-                <td>Calcule equações do 1º e 2º graus.</td>
-                <td><a type="button" class="btn btn-primary" href="equacoes.php">Calcular</a></td>
-            </tr>
-            <tr>
-                <td>Matemática Financeira</td>
-                <td>Calcule o quanto você terá que pagar de juros.</td>
-                <td><a type="button" class="btn btn-primary" href="financeira.php">Calcular</a></td>
-            </tr>
-            <tr>
-                <td>Teorema de Pitágoras</td>
-                <td>Calcule qualquer lado no triângulo retângulo.</td>
-                <td><a type="button" class="btn btn-primary" href="pitagoras.php">Calcular</a></td>
-            </tr>
-            <tr>
-                <td>Regra de Três</td>
-                <td>Calcule qualquer proporção.</td>
-                <td><a type="button" class="btn btn-primary" href="regra_tres.php">Calcular</a></td>
-            </tr>
-            <tr>
-                <td>Progressões</td>
-                <td>Calcule qualquer termo geral ou interpole em qualquer progressão.</td>
-                <td><a type="button" class="btn btn-primary" href="progressoes.php">Calcular</a></td>
-            </tr>
-            <tr>
-                <td>MMC e MDC</td>
-                <td>Calcule qualquer MMC e MDC de dois números inteiros.</td>
-                <td><a type="button" class="btn btn-primary" href="mmc.php">Calcular</a></td>
-            </tr>
-        </table>
-    </main>
-    <br>
+        <?php
+            echo '<main>
+                <h4>Excluir conta</h4>
+                <p>Exclui e encerra a sua conta. Essa ação não pode ser desfeita.</p>
+                <a type="button" class="btn btn-primary" href="excluir.php?id=' . $_GET['id'] . '">Excluir</a>
+                <br>
+                <h4>Atualizar conta</h4>
+                <p>Atualiza seus dados cadastrais da sua conta.</p>
+                <a type="button" class="btn btn-primary" href="atualizar.php?id=' . $_GET['id'] . '">Atualizar</a>
+                <br>
+                <h4>Histórico</h4>
+                <p>Confira seu histórico de cálculos.</p>
+                <a type="button" class="btn btn-primary" href="historico.php?id=' . $_GET['id'] . '">Histórico</a>
+            </main>';
+        ?>
+        <br>
 		<footer class="footer">
       <div class="container">
         	Copyright © 2017 Estaleiro Matemático. Todos os direitos reservados.
