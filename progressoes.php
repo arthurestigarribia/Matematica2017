@@ -10,14 +10,14 @@
     <meta charset="utf-8">
     <title>Estaleiro Matemático</title>
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <link rel="stylesheet" href="src/bootstrap.css" media="screen, projection">
+    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css" media="screen, projection">
     <link rel="stylesheet" href="src/estilo.css" media="screen, projection">
     <script type="text/javascript" src="src/jquery.js"></script>
-    <script type="text/javascript" src="src/bootstrap.js"></script>
+    <script type="text/javascript" src="src/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 </head>
 <body>  
 <header>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -34,9 +34,9 @@
               <li>
                 <?php
                   if (isset($_SESSION['logado'])) {
-                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> " . $_SESSION['nome'] . "</a>";
                   } else {
-                      echo "<a href='login.php'>Login</a>";
+                      echo "<a href='login.php'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> Entrar</a>";
                   }
                 ?>
               </li>
@@ -167,9 +167,9 @@
             ?>
         </main>
         <br>
-		<footer class="footer">
+    <footer class="footer">
       <div class="container">
-        	Copyright © 2017 Estaleiro Matemático. Todos os direitos reservados.
+				<p class="text-muted">Copyright © 2017 Estaleiro Matemático. Todos os direitos reservados.</p>
       </div>
     </footer>
 </body>

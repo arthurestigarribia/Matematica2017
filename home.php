@@ -7,14 +7,14 @@
     <meta charset="utf-8">
     <title>Estaleiro Matemático</title>
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <link rel="stylesheet" href="src/bootstrap.css" media="screen, projection">
-		<link rel="stylesheet" href="src/estilo.css" media="screen, projection">
+    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css" media="screen, projection">
+    <link rel="stylesheet" href="src/estilo.css" media="screen, projection">
     <script type="text/javascript" src="src/jquery.js"></script>
-    <script type="text/javascript" src="src/bootstrap.js"></script>
+    <script type="text/javascript" src="src/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 </head>
 <body>  
 <header>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -31,9 +31,9 @@
               <li>
                 <?php
                   if (isset($_SESSION['logado'])) {
-                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'>" . $_SESSION['nome'] . "</a>";
+                      echo "<a href='pessoal.php?id=" . $_SESSION['id'] . "'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> " . $_SESSION['nome'] . "</a>";
                   } else {
-                      echo "<a href='login.php'>Login</a>";
+                      echo "<a href='login.php'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> Entrar</a>";
                   }
                 ?>
               </li>
@@ -43,6 +43,7 @@
       </div>
     </nav>
   </header>
+
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -84,38 +85,10 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
-	<div class="jumbotron">
-        <h1>Bem-vindo</h1>
-        <p>Bem-vindo ao Estaleiro Matemático!</p>
-        <a type="button" class="btn btn-primary" href="sobre.php">Saiba mais</a>
-	</div>
-    <main style="padding-left: 10px; padding-right: 10px;">
-    	<div class="row">
-				<div class="col-xs-6 col-md-4">
-					<img class="img-rounded" src="bin/math.png" alt="Equações"  style="width: 400px; height: 400px; object-fit: cover; object-position: center; overflow:hidden;" >
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-8">
-					<h1>Calculadoras</h1>
-						<p>Confira as nossas diversas calculadoras!</p>
-						<a type="button" class="btn btn-primary" href="calculadoras.php">Confira</a>
-				</div>
-			</div>
-			<br>
-			<div class="row">
-				<div class="col-xs-6 col-md-4">
-					<img class="img-rounded" src="bin/estaleiro.png" alt="Equações"  style="width: 400px; height: 400px; object-fit: cover; object-position: center; overflow:hidden;" >
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-8">
-					<h1>Cadastre-se e obtenha mais vantagens</h1>
-						<p>Faça seu cadastro grátis e obtenha mais vantagens no site!</p>
-						<a type="button" class="btn btn-primary" href="cadastro.php">Cadastre-se grátis</a>
-				</div>
-			</div>
-    </main>
 		<br>
-		<footer class="footer">
+    <footer class="footer">
       <div class="container">
-        	Copyright © 2017 Estaleiro Matemático. Todos os direitos reservados.
+				<p class="text-muted">Copyright © 2017 Estaleiro Matemático. Todos os direitos reservados.</p>
       </div>
     </footer>
 </body>
