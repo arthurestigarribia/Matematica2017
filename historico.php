@@ -73,6 +73,10 @@
 
 			echo $tabela;
         ?>
+
+        <?php
+          echo '<a class="btn btn-default" type="button" href="limpar.php?id=' . $_GET["id"] . '">Limpar histórico</a>';
+        ?>
         </main>
         <br>
     <footer class="footer">
