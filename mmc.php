@@ -67,11 +67,12 @@
         </div>
     </div>
     <main>
-        <form name="coeficientes" action="mmc.php" method="post">
+        <form class="form-inline" name="coeficientes" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <input type="number" class="form-control" name="termo_a" id="termo_a" placeholder="Número 1" required>
             <input type="number" class="form-control" name="termo_b" id="termo_b" placeholder="Número 2" required>
             <input type="submit" class="btn btn-default" value="Calcular">
         </form>
+        <h3>Resultado</h3>
         <?php
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 function arredonda($num) {
@@ -109,13 +110,15 @@
                 $id = $_SESSION['id'];
                 $con = mysqli_connect('localhost', 'root', '', 'usuarios') or die(mysqli_error('Não foi possível conectar ao banco de dados.'));
 			    $q = mysqli_query($con, "INSERT INTO calculos(id_usuario, categoria, dado1, dado2, resultados) VALUES ('$id', 'MMC e MDC', '$a', '$b', '$r');");
-            }
+            } else {
+                echo "Preencha os campos.";
+            }                  
         ?>
     </main>
     <br>
     <footer class="footer">
       <div class="container">
-				<p class="text-muted">Copyright © 2017 Estaleiro Matemático. Todos os direitos reservados.</p>
+		<p class="text-muted">Copyright © 2017 Estaleiro Matemático. Todos os direitos reservados.</p>
       </div>
     </footer>
 </body>

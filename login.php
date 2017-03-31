@@ -53,7 +53,7 @@
     </div>
     
     <main>
-        <form method="post" action="login.php">
+        <form class="form-inline" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="form-group">
                 <input class="form-control" type="text" name="email" maxlength="100" placeholder="Email">
             </div>

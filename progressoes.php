@@ -68,7 +68,7 @@
     </div>
     <main>
             <h4>Coeficientes</h4>
-            <form name="coeficientes" action="progressoes.php" method="post">
+            <form name="coeficientes" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <input type="number" class="form-control" name="termo_a" id="termo_a" placeholder="Primeiro termo" required>
                 <input type="number" class="form-control" name="termo_b" id="termo_b" placeholder="Enésimo termo ou número n" required>
                 <input type="number" class="form-control" name="termo_c" id="termo_c" placeholder="Razão ou meios de interpolação" required>

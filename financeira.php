@@ -72,7 +72,7 @@
     </div>
     <main>
         <h4>Coeficientes</h4>
-        <form name="coeficientes" action="financeira.php" method="post">
+        <form name="coeficientes" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <input type="number" class="form-control" name="termo_a" id="termo_a" placeholder="Capital" min="0" required>
             <input type="number" class="form-control" name="termo_b" id="termo_b" placeholder="Taxa percentual" min="0" required>
             <input type="number" class="form-control" name="termo_c" id="termo_c" placeholder="Tempo" min="0" required>

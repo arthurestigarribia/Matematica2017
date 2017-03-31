@@ -73,7 +73,7 @@
     <main>
             <h4>Coeficientes</h4>
             Os coeficientes são relativos à forma a² = x² + b² (cateto) ou x² = a² + b² (hipotenusa).
-            <form name="coeficientes" action="pitagoras.php" method="post">
+            <form name="coeficientes" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <input type="number" class="form-control" name="termo_a" id="termo_a" placeholder="a" required>
                 <input type="number" class="form-control" name="termo_b" id="termo_b" placeholder="b" required>
                 <select class="form-control" name="proporcao" id="proporcao">

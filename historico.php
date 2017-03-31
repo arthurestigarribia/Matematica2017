@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if (!isset($_SESSION['logado'])) {
+       header('Location: login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,7 +15,7 @@
     <script type="text/javascript" src="src/jquery.js"></script>
     <script type="text/javascript" src="src/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 </head>
-<body>  
+<body>
 <header>
     <nav class="navbar navbar-default">
       <div class="container-fluid">

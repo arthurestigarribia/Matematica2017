@@ -96,6 +96,16 @@
                 <td>Converta valores entre diversas unidades de diversas grandezas.</td>
                 <td><a type="button" class="btn btn-primary" href="conversor.php">Calcular</a></td>
             </tr>
+            <tr>
+                <td>Análise Combinatória</td>
+                <td>Calcule arranjos e combinações.</td>
+                <td><a type="button" class="btn btn-primary" href="combinatoria.php">Calcular</a></td>
+            </tr>
+            <tr>
+                <td>Porcentagem</td>
+                <td>Calcule porcentagens e reajustes.</td>
+                <td><a type="button" class="btn btn-primary" href="porcentagem.php">Calcular</a></td>
+            </tr>
         </table>
     </main>
     <br>

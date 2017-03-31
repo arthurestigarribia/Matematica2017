@@ -53,7 +53,7 @@
     </div>
     
     <main>
-        <form method="post" action="cadastro.php">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="form-group">
                 <input class="form-control" type="text" name="nome" maxlength="50" placeholder="Nome">
             </div>

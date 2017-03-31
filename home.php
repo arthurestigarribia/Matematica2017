@@ -49,6 +49,7 @@
 				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="3"></li>
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
@@ -73,6 +74,14 @@
 						<h3>Calculadora de Matemática Financeira</h3>
 						<p>Calcule o quanto você terá que pagar de juros.</p>
 						<a type="button" class="btn btn-primary" href="financeira.php">Calcular</a>
+					</div>
+				</div>
+				<div class="item">
+					<img src="bin/balanca.png" style="width: 100%; height: 500px; object-fit: cover; object-position: center; overflow:hidden;" alt="Dinheiro">
+					<div class="carousel-caption">
+						<h3>Conversor de Unidades</h3>
+						<p>Converta diversas unidades de massa e outras grandezas.</p>
+						<a type="button" class="btn btn-primary" href="conversor.php">Converta já!</a>
 					</div>
 				</div>
 			</div>

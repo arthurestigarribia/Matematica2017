@@ -73,7 +73,7 @@
     <main>
             <h4>Coeficientes</h4>
             Os coeficientes são relativos à forma ax² + bx + c = 0.
-            <form name="coeficientes" action="equacoes.php" method="post">
+            <form name="coeficientes" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 <input type="number" class="form-control" name="termo_a" id="termo_a" placeholder="a = Coeficiente do 2º grau" required>
                 <input type="number" class="form-control" name="termo_b" id="termo_b" placeholder="b = Coeficiente do 1º grau" required>
                 <input type="number" class="form-control" name="termo_c" id="termo_c" placeholder="c = Coeficiente independente" required>
@@ -93,6 +93,41 @@
                     $a = isset($_POST["termo_a"]) ? (float)$_POST["termo_a"] : 0.0;
                     $b = isset($_POST["termo_b"]) ? (float)$_POST["termo_b"] : 0.0;
                     $c = isset($_POST["termo_c"]) ? (float)$_POST["termo_c"] : 0.0;
+
+                    $str = "";
+
+                    if ($a > 0) {
+                      if ($a == 1) $str .= "x²";
+                      else $str .= $a . "x²";
+                    } elseif ($a < 0) {
+                      if ($a == 1) $str .= "- x²";
+                      else $str .= "-" . -$a . "x²";
+                    } else {
+
+                    }
+
+                    if ($b > 0) {
+                      if ($b == 1) $str .= " + x";
+                      else $str .= " + " . $b . "x";
+                    } elseif ($b < 0) {
+                      if ($b == 1) $str .= " - x";
+                      else $str .= " - " . -$b . "x";
+                    } else {
+                      
+                    }
+
+                    if ($c > 0) {
+                      $str .= " + " . $c . "";
+                    } elseif ($c < 0) {
+                      $str .= " - " . -$c . "";
+                    } else {
+                      
+                    }
+
+                    $str .= " = 0";
+
+                    echo $str . "<br>";
+                
 
                     $r = "";
 

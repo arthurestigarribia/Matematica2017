@@ -67,7 +67,7 @@
         </div>
     </div>
     <main>
-        <form class="form-inline" action="conversor.php" method="post">
+        <form class="form-inline" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div class="form-group">
                 <select class="form-control" id="grandeza" name="grandeza">
                     <option value="a0">Selecione...</option>
@@ -506,14 +506,14 @@
 
                     switch ($de) {
                         case "grau": $v1 = arredonda($v); break;
-                        case "grado": $v1 = arredonda($v * 10/9); break;
-                        case "radiano": $v1 = arredonda($v * 0.017453); break;
+                        case "grado": $v1 = arredonda($v / 10/9); break;
+                        case "radiano": $v1 = arredonda($v / 0.017453); break;
                     }
 
                     switch ($para) {
                         case "grau": return arredonda($v1); break;
-                        case "grado": return arredonda($v1 / 10/9); break;
-                        case "radiano": return arredonda($v1 / 0.017453); break;
+                        case "grado": return arredonda($v1 * 10/9); break;
+                        case "radiano": return arredonda($v1 * 0.017453); break;
                     }
 
                     return $v1;
