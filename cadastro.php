@@ -70,7 +70,15 @@
         <br>
         Já tem uma conta? <br><a type="button" class="btn btn-primary" href="login.php">Faça seu login!</a>
         <?php
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                function validaEmail($email){
+                    return preg_match("/(\S+)@(\S+).(\S+)/i", $email);
+                }
+
+                function validaSenha($senha) {
+                    return preg_match("/([a-zA-Z]+|[0-9]+){8,}/i", $senha);
+                }
+
                 function errodb($num) {
                     echo "<script type='text/javascript'>alert('Não foi possível conectar ao banco de dados. Erro: " . $num . ".');</script>";
                 }
@@ -78,9 +86,9 @@
                 $c = mysqli_connect('localhost', 'root', '', 'usuarios') or die(errodb(1));
                 $q = mysqli_query($c, 'CREATE TABLE IF NOT EXISTS usuarios(id SERIAL NOT NULL PRIMARY KEY, nome VARCHAR(50) NOT NULL, email VARCHAR(100) NOT NULL, senha VARCHAR(32) NOT NULL);') or die(errodb(2));
 
-                function validaUsuario($c, $u, $s) {
-                    if (strlen($u) == 0 || strlen($u) > 100) return false;
-                    if (strlen($s) < 8 || strlen($s) > 16) return false;
+                function validaUsuario($c, $e, $s) {
+                    if (strlen($e) == 0 || strlen($e) > 100 || !validaEmail($e)) return false;
+                    if (strlen($s) < 8 || strlen($s) > 16 || !validaSenha($s)) return false;
                    
                     $q = mysqli_query($c, "SELECT email, senha FROM usuarios WHERE email = '$u' AND senha = md5('$s');") or die(errodb(3));
                     $r = mysqli_fetch_assoc($q);
@@ -89,8 +97,8 @@
                     return false;
                 }
 
-                function obtemId($c, $u, $s) {
-                    $q = mysqli_query($c, "SELECT id FROM usuarios WHERE email = '$u' AND senha = md5('$s');") or die(errodb(7));
+                function obtemId($c, $e, $s) {
+                    $q = mysqli_query($c, "SELECT id FROM usuarios WHERE email = '$e' AND senha = md5('$s');") or die(errodb(7));
                     $r = mysqli_fetch_assoc($q);
 
                     return $r["id"];
